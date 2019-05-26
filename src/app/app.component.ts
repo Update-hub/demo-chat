@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
-import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,24 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Chat APP';
-
-  afUser$ = this.afAuth.authState;
+  title = 'Chat';
+  afUser$ = this.authService.afUser$;
 
   constructor(
-    public afAuth: AngularFireAuth,
-    private router: Router
+    private authService: AuthService
   ) {}
 
   login() {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(() => {
-      this.router.navigateByUrl('/');
-    });
+    this.authService.login();
   }
 
   logout() {
-    this.afAuth.auth.signOut().then(() => {
-      this.router.navigateByUrl('/login');
-    });
+    this.authService.logout();
   }
 }

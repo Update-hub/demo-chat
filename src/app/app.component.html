@@ -3,9 +3,14 @@
     <span class="title" routerLink="/">{{title}}</span>
     <span class="spacer"></span>
     <button mat-button routerLink="/help">Help</button>
-    <button class="avatar" mat-button (click)="logout()" *ngIf="afUser$ | async as afUser" mat-mini-fab [style.background-image]="'url(' + afUser.photoURL + ')'"></button>
+    <button class="avatar" [matMenuTriggerFor]="menu" mat-button *ngIf="afUser$ | async as afUser" mat-mini-fab [style.background-image]="'url(' + afUser.photoURL + ')'"></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>ログアウト</span>
+      </button>
+    </mat-menu>
     <button mat-button *ngIf="!(afUser$ | async)" (click)="login()">ログイン</button>
-
   </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>
