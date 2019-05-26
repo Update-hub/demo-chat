@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +13,20 @@ export class AppComponent {
 
   afUser$ = this.afAuth.authState;
 
-  constructor(public afAuth: AngularFireAuth) {}
+  constructor(
+    public afAuth: AngularFireAuth,
+    private router: Router
+  ) {}
 
   login() {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(() => {
+      this.router.navigateByUrl('/');
+    });
   }
 
   logout() {
-    this.afAuth.auth.signOut();
+    this.afAuth.auth.signOut().then(() => {
+      this.router.navigateByUrl('/login');
+    });
   }
 }
