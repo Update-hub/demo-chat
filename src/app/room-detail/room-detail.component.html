@@ -1,0 +1,27 @@
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+<div *ngIf="room$ | async as room">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openEditor(room.name)">
+      <mat-icon>edit</mat-icon>
+      <span>編集</span>
+    </button>
+    <button mat-menu-item (click)="deleteRoom(room.id)">
+      <mat-icon>delete</mat-icon>
+      <span>削除</span>
+    </button>
+  </mat-menu>
+
+  <div *ngIf="isEditorOpen">
+    <mat-form-field>
+      <input type="text" [formControl]="roomControl" matInput required>
+    </mat-form-field>
+    <button mat-button (click)="editRoom(room.id)">更新</button>
+  </div>
+
+  <h1>{{room.name}}</h1>
+  <p>ルーム作成日: {{room.createdAt.toDate() | date:'yyyy/MM/dd'}}</p>
+</div>

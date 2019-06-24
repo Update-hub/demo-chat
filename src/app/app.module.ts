@@ -14,13 +14,15 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './login/login.component';
+import { RoomDetailComponent } from './room-detail/room-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelpComponent,
     TopComponent,
-    LoginComponent
+    LoginComponent,
+    RoomDetailComponent
   ],
   imports: [
     BrowserModule,

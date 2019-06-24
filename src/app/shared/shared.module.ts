@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {
-  MatButtonModule, MatMenuModule, MatIconModule, MatInputModule, MatFormFieldModule, MatSnackBarModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-  ],
+  imports: [CommonModule],
   exports: [
     MatButtonModule,
     MatMenuModule,
@@ -20,8 +22,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     MatInputModule,
     MatFormFieldModule,
+    MatListModule,
+    MatDividerModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressBarModule
   ]
 })
-export class SharedModule { }
+export class SharedModule {}

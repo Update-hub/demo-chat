@@ -1,5 +1,7 @@
 <div class="container">
-  <h1>ルームを作成する</h1>
+  <h1>ルーム</h1>
+
+  <h2>ルーム作成</h2>
 
   <form [formGroup]="form" (ngSubmit)="createRoom()">
     <mat-form-field class="room-title">
@@ -9,4 +11,17 @@
     </mat-form-field>
     <button mat-raised-button [disabled]="form.invalid" color="primary">作成</button>
   </form>
+
+  <h2>ルーム一覧</h2>
+
+  <mat-list dense>
+    <ng-container *ngFor="let room of rooms$ | async">
+      <mat-list-item routerLink="{{room.id}}">
+        <h4 mat-line>{{room.name}}</h4>
+        <p mat-line> {{room.createdAt.toDate() | date:'yyyy/MM/dd HH:mm'}} </p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-list>
+
 </div>

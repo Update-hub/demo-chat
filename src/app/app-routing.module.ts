@@ -5,6 +5,7 @@ import { TopComponent } from './top/top.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { GuestGuard } from './guards/guest.guard';
+import { RoomDetailComponent } from './room-detail/room-detail.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     canActivate: [GuestGuard]
+  },
+  {
+    path: ':roomId',
+    component: RoomDetailComponent,
+    canActivate: [AuthGuard]
   },
 ];
 
